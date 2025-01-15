@@ -19,7 +19,7 @@ class Nomenclador
     }
 
     public function searchByKeyword($keyword) {
-        $sql = "SELECT CODIGO, LEFT(DESCRIPCION, 100) AS DESCRIPCION 
+        $sql = "SELECT CODIGO, LEFT(DESCRIPCION, 400) AS DESCRIPCION 
                 FROM nomenclador 
                 WHERE CODIGO LIKE :keyword OR DESCRIPCION LIKE :keyword";
         $stmt = $this->db->prepare($sql);
