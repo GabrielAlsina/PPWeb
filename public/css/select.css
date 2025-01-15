@@ -1,0 +1,170 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-image: url('../../public/images/background.jpg'); /* Cambia la ruta a tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 10;
+}
+
+.navbar-brand {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: white;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #ddd;
+}
+
+.contact-button {
+    background-color: #fc3441;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #ff4b4b;
+}
+
+/* Content Styling */
+.card {
+    width: 80%;
+    max-width: 900px;
+    padding: 2rem;
+    margin-top: 5rem; /* Espacio después del navbar */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card li {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    position: relative;
+    background: rgba(255, 255, 255, 0.6); /* Fondo semitransparente */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card li::before {
+    content: "✔"; /* O puedes usar otros íconos como "➤" o cualquier otro */
+    color: #fc3441;
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
+}
+
+.card li:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px); /* Levanta el elemento al pasar sobre él */
+}
+
+.card li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.card li a:hover {
+    color: #fc3441;
+}
+
+.card li a::after {
+    content: " ➔";
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateX(-5px); /* Posición inicial de la flecha */
+}
+
+.card li a:hover::after {
+    opacity: 1;
+    transform: translateX(0); /* La flecha se mueve hacia su posición normal al pasar */
+}
+
+/* Footer Styling */
+footer {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+}

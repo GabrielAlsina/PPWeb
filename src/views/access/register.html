@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../public/css/register.css">
+    <title>Registro</title>
+  </head>
+  <body>
+    <div id="formRegistro">
+      <form action="../../controllers/RegistroController.php" method="POST">
+        <label for="username">Nombre:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Escribe tu nombre"
+          required
+        />
+
+        <label for="email">Correo Electrónico:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Escribe tu correo"
+          required
+        />
+
+        <label for="pass">Contraseña:</label>
+        <input
+          type="password"
+          id="pass"
+          name="pass"
+          placeholder="Escribe tu contraseña"
+          required
+        />
+
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </body>
+</html>

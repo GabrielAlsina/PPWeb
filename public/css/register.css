@@ -1,0 +1,77 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background-image: url("../../public/images/background.jpg"); /* Ruta de imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Overlay Effect with Gradient */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+  }
+  
+  /* Estilos específicos para el formulario de Registro */
+  #formRegistro {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  #formRegistro form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #formRegistro label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  
+  #formRegistro input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  #formRegistro button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    background-color: #fc3441;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #formRegistro button:hover {
+    background-color: #ff4b4b;
+  }
+  

@@ -1,0 +1,96 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background-image: url("../../public/images/background.jpg"); /* Ruta de imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Overlay Effect with Gradient */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+  }
+  
+  /* Estilos específicos para el formulario de Login */
+  #formLogin {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  #formLogin h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  #formLogin .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  #formLogin label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  #formLogin input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  #formLogin button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    background-color: #fc3441;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #formLogin button:hover {
+    background-color: #ff4b4b;
+  }
+  
+  #formLogin p {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  
+  #formLogin a {
+    color: #fc3441;
+    text-decoration: none;
+  }
+  
+  #formLogin a:hover {
+    color: #ff4b4b;
+  }
+  
