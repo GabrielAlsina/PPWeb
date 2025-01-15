@@ -15,7 +15,7 @@ class DataBase
     public function __construct()
     {
         // para cargar variables de entorno desde el .env
-        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv = Dotenv::createImmutable(__DIR__."/../..");
         $dotenv->load();
 
         // Asignar los valores de las variables de entorno a las propiedades
