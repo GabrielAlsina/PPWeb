@@ -1,127 +1,169 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9); /* Fondo animado */
+  background-size: 400% 400%; /* Asegura que el gradiente cubra todo el fondo */
+  animation: gradientShift 5s ease infinite; /* Animación del cambio rápido de gradiente */
+  color: #fff;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Overlay Effect with Gradient */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%);
+  z-index: -1;
+}
+
+/* Main Title */
+main h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Form Styling with Transparency */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.7); /* Transparencia aplicada aquí */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #333;
+  z-index: 1;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Input, Select, and Textarea Styling */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.9); /* Transparencia aquí también */
+  color: #333;
+}
+
+/* Input Focus Effect */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #fc3441;
+  box-shadow: 0 0 5px rgba(252, 52, 65, 0.6);
+}
+
+/* Select Styling */
+select {
+  appearance: none; /* Removes default arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+}
+
+/* Button Styling */
+button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #fc3441;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ff4b4b;
+}
+
+button[type="reset"] {
+  background-color: #333;
+  margin-left: 1rem;
+}
+
+button[type="reset"]:hover {
+  background-color: #555;
+}
+
+/* Card Styling with Transparency */
+.card {
+  background-color: rgba(255, 255, 255, 0.7); /* Transparencia aplicada aquí */
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Footer Styling */
+.footer {
+  margin-top: auto;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.footer .social-links a {
+  color: #fc3441;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #ff4b4b;
+}
+
+/* Gradient Animation Keyframes */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  /* Body Styling */
-  body {
-    font-family: "Segoe UI", sans-serif;
-    background-image: url("../../public/images/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #fff;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  /* Overlay Effect with Gradient */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%);
-    z-index: -1;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  /* Main Title */
-  main h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #fff;
-    margin-top: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  }
-  
-  /* Form Styling */
-  form {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-  }
-  
-  label {
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  
-  input,
-  select,
-  textarea {
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: none;
-    border-color: #fc3441;
-    box-shadow: 0 0 5px rgba(252, 52, 65, 0.6);
-  }
-  
-  button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #fc3441;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #ff4b4b;
-  }
-  
-  button[type="reset"] {
-    background-color: #333;
-    margin-left: 1rem;
-  }
-  
-  button[type="reset"]:hover {
-    background-color: #555;
-  }
-  
-  /* Footer */
-  .footer {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-size: 0.9rem;
-  }
-  
-  .footer .social-links a {
-    color: #fc3441;
-    text-decoration: none;
-    margin: 0 1rem;
-    transition: color 0.3s;
-  }
-  
-  .footer .social-links a:hover {
-    color: #ff4b4b;
-  }
-  
+}

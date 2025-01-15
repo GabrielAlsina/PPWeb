@@ -7,15 +7,27 @@
 
 /* Body Styling */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-image: url("../../public/images/background.jpg"); /* Ruta de imagen de fondo */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9); /* Gradiente de colores oscuros con tonos azulados y morados */
+  background-size: 400% 400%; /* Asegura que el gradiente cubra todo el fondo */
+  animation: gradientShift 5s ease infinite; /* Animación del cambio rápido de gradiente */
   color: #fff;
   text-align: center;
   position: relative;
   z-index: 1;
+}
+
+/* Animación del fondo degradado (más rápido) */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Overlay Effect with Gradient */
@@ -26,7 +38,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%);
+  background: rgba(0, 0, 0, 0.7); /* Oscurece un poco el fondo */
   z-index: -1;
 }
 
@@ -38,14 +50,13 @@ body::before {
 .header h1 {
   font-size: 4rem;
   font-weight: bold;
-  color: #fff;
 }
 
 .header .tagline {
   font-size: 1.5rem;
   margin-top: 0.5rem;
   color: #fa6670;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9); /* sombra del texto */
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
 }
 
 /* Sección de Introducción */
@@ -53,27 +64,15 @@ body::before {
   max-width: 800px;
   margin: 3rem auto;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0)); /* Degradado desde el centro a los bordes */
   border-radius: 10px;
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.introduction h2 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.introduction p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-
 /* Servicios */
 .services {
   margin: 4rem auto;
-  color: #fff;
 }
 
 .services h2 {
@@ -87,19 +86,40 @@ body::before {
   gap: 2rem;
 }
 
+/* Estilo para las tarjetas de servicio (vidrio translúcido) */
 .service-card {
   width: 300px;
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: #333;
+  background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+  border-radius: 12px; /* Bordes más redondeados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más marcada */
+  color: #fff;
+  backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, filter 0.3s ease; /* Transiciones suaves */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+  cursor: pointer; /* Indica que es interactivo */
 }
 
-.service-card h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
+/* Hover Effect - Movimiento y resplandor */
+.service-card:hover {
+  transform: translateY(-10px); /* Mueve la tarjeta hacia arriba */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+  background: rgba(255, 255, 255, 0.3); /* Se ilumina ligeramente */
+  filter: brightness(1.2); /* Aumenta el brillo para un efecto de iluminación */
+}
+
+/* Animación Fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Llamado a la Acción */
@@ -117,19 +137,25 @@ body::before {
   margin-bottom: 1rem;
 }
 
-.button-link {
-  display: inline-block;
-  padding: 1rem 2rem;
+/* Botón de Facturación */
+#facturacion {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+#facturacion .button-link {
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
   background-color: #fc3441;
   color: #fff;
-  text-decoration: none;
   border-radius: 5px;
-  font-size: 1.1rem;
-  font-weight: bold;
+  text-decoration: none;
   transition: background-color 0.3s;
 }
 
-.button-link:hover {
+#facturacion .button-link:hover {
   background-color: #ff4b4b;
 }
 
@@ -151,81 +177,4 @@ body::before {
 
 .footer .social-links a:hover {
   color: #ff4b4b;
-}
-
-/* Botón de Facturación */
-#facturacion {
-  position: fixed; /* Cambiado de absolute a fixed */
-  top: 1rem;
-  right: 1rem;
-  z-index: 10; /* Asegura que el botón quede sobre otros elementos */
-}
-
-#facturacion .button-link {
-  padding: 0.8rem 1.5rem;
-  font-size: 0.9rem;
-  background-color: #fc3441;
-  color: #fff;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-#facturacion .button-link:hover {
-  background-color: #ff4b4b;
-}
-
-/* Animaciones en las Tarjetas */
-.service-card {
-    width: 300px;
-    padding: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #333;
-    transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.6s ease forwards;
-}
-
-/* Hover Effect */
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Fade-in Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Fondo y Contenido */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-image: url("../../public/images/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #fff;
-    text-align: center;
-}
-
-/* Efecto de Gradiente en el Overlay */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) 70%);
-    z-index: -1;
 }

@@ -7,19 +7,35 @@
 
 /* Body Styling */
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Segoe UI", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
-    background-image: url('../../public/images/background.jpg'); /* Cambia la ruta a tu imagen */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    min-height: 100vh; /* Asegura que el contenido cubra toda la pantalla */
+    background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9); /* Fondo animado */
+    background-size: 400% 400%; /* Asegura que el gradiente cubra todo el fondo */
+    animation: gradientShift 5s ease infinite; /* Animación del cambio rápido de gradiente */
     color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
+/* Animación para el gradiente de fondo */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Overlay Effect with Gradient */
 body::before {
     content: "";
     position: fixed;
@@ -29,6 +45,16 @@ body::before {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%);
     z-index: -1;
+}
+
+/* Contenedor principal */
+main {
+    flex: 1; /* Esto hace que el contenedor ocupe el espacio disponible */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 /* Navbar Styling */
@@ -45,7 +71,7 @@ body::before {
 }
 
 .navbar-brand {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Segoe UI", sans-serif;
     font-weight: bold;
     font-size: 1.7rem;
     color: white;
@@ -89,9 +115,10 @@ body::before {
     max-width: 900px;
     padding: 2rem;
     margin-top: 5rem; /* Espacio después del navbar */
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo translúcido */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque */
     text-align: center;
     margin-bottom: 20px;
 }
@@ -99,7 +126,7 @@ body::before {
 .card h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #fff; /* Texto blanco */
 }
 
 .card ul {
@@ -120,7 +147,7 @@ body::before {
 }
 
 .card li::before {
-    content: "✔"; /* O puedes usar otros íconos como "➤" o cualquier otro */
+    content: "✔"; /* Icono */
     color: #fc3441;
     font-size: 1.2rem;
     margin-right: 0.8rem;
@@ -128,7 +155,7 @@ body::before {
 
 .card li:hover {
     background-color: rgba(255, 255, 255, 0.8);
-    transform: translateY(-2px); /* Levanta el elemento al pasar sobre él */
+    transform: translateY(-2px); /* Efecto de levante */
 }
 
 .card li a {
@@ -151,7 +178,7 @@ body::before {
 
 .card li a:hover::after {
     opacity: 1;
-    transform: translateX(0); /* La flecha se mueve hacia su posición normal al pasar */
+    transform: translateX(0); /* Flecha en su posición final */
 }
 
 /* Footer Styling */
@@ -162,7 +189,8 @@ footer {
     color: white;
     text-align: center;
     font-size: 0.9rem;
-    margin-top: auto;
+    position: relative;
+    margin-top: auto; /* Esto asegura que el footer se quede abajo */
 }
 
 footer p {
