@@ -1,6 +1,4 @@
 <?php
-// /controllers/registroController.php
-
 include_once '../config/Database.php';
 include_once '../models/User.php';
 
@@ -11,27 +9,41 @@ $db = $database->getConnection();
 // Crear una instancia del modelo de usuario
 $user = new User($db);
 
-// Comprobar si se enviaron datos mediante POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recibir los datos del formulario
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['pass'];
+    header('Content-Type: application/json');
 
-    // Verificar si el usuario ya existe
+    $username = $_POST['username'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['pass'] ?? '';
+
+    // Validar que todos los campos estén completos
+    if (empty($username) || empty($email) || empty($password)) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Todos los campos son obligatorios.'
+        ]);
+        exit;
+    }
+
+    // Comprobar si el usuario o el correo ya existen
     if ($user->userExists($username, $email)) {
-        echo "El usuario o el correo electrónico ya están registrados. Volviendo...";
-        $previous_page = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'login.html';
-        header("Refresh: 5; url=$previous_page");
+        echo json_encode([
+            'success' => false,
+            'message' => 'El usuario o el correo electrónico ya están registrados.'
+        ]);
+        exit;
+    }
+
+    // Registrar el usuario solo si no existe
+    if ($user->register($username, $email, $password)) {
+        echo json_encode([
+            'success' => true,
+            'message' => 'Usuario registrado exitosamente.'
+        ]);
     } else {
-        // Registrar al nuevo usuario
-        if ($user->register($username, $email, $password)) {
-            echo "Usuario registrado exitosamente.";
-            // Redirigir a una página de login o de bienvenida
-            header("Location: ../views/access/login.html");
-            exit;
-        } else {
-            echo "Hubo un error al registrar el usuario.";
-        }
+        echo json_encode([
+            'success' => false,
+            'message' => 'Hubo un error al registrar el usuario. Inténtalo nuevamente.'
+        ]);
     }
 }

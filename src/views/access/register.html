@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../../public/css/register.css">
-    <title>Registro</title>
-  </head>
-  <body>
-    <div id="formRegistro">
-      <form action="../../controllers/RegistroController.php" method="POST">
-        <label for="username">Nombre:</label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../../public/css/login.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../../public/js/register.js" defer></script>
+  <title>Quaerite - Registro</title>
+</head>
+<body>
+  <div id="formLogin">
+    <h1>Registro</h1>
+    <form id="registerForm" action="../../controllers/registroController.php" method="POST">
+      <div class="form-group">
         <input
           type="text"
           id="username"
           name="username"
-          placeholder="Escribe tu nombre"
           required
+          placeholder="Escribe tu nombre"
         />
-
-        <label for="email">Correo Electrónico:</label>
+      </div>
+      <div class="form-group">
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="Escribe tu correo"
           required
+          placeholder="Escribe tu correo"
         />
-
-        <label for="pass">Contraseña:</label>
+      </div>
+      <div class="form-group">
         <input
           type="password"
           id="pass"
           name="pass"
-          placeholder="Escribe tu contraseña"
           required
+          placeholder="Escribe tu contraseña"
         />
-
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  </body>
+      </div>
+      <div>
+        <p>¿Ya tienes cuenta? <a href="./login.html">Inicia sesión aquí</a></p>
+      </div>
+      <br />
+      <button type="reset">Cancelar</button>
+      <button type="submit">Registrarse</button>
+    </form>
+  </div>
+</body>
 </html>

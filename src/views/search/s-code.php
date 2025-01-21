@@ -45,7 +45,6 @@ $cart = $_SESSION["cart"];
     </div>
 </header>
 
-<h1>Buscar práctica</h1>
 <form id="searchForm">
     <label for="codigo">Buscar por código o descripción:</label>
     <div class="search-container">
