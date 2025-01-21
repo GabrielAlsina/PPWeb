@@ -10,7 +10,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9); /* Gradiente de colores oscuros con tonos azulados y morados */
   background-size: 400% 400%; /* Asegura que el gradiente cubra todo el fondo */
-  animation: gradientShift 5s ease infinite; /* Animación del cambio rápido de gradiente */
+  animation: gradientShift 11s ease infinite; /* Animación del cambio rápido de gradiente */
   color: #fff;
   text-align: center;
   position: relative;
