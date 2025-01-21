@@ -13,10 +13,17 @@ $user = new User($db);
 // se enviaron datos mediante POST ?
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // tomar datos del formulario
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-    // el usuario existe?
+    // validar que los campos no estén vacíos
+    if (empty($username) || empty($password)) {
+        echo "Por favor, completa todos los campos. Redirigiendo...";
+        header("Refresh: 5; url=login.html");
+        exit;
+    }
+
+    // buscar al usuario en la base de datos
     $user_data = $user->userExists($username); 
 
     if ($user_data) {
@@ -27,31 +34,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user_data['id'];
             $_SESSION['username'] = $user_data['username'];
 
-            // redirigir a la seleccion
-            header("Location: ../views/search/select.html");
+            // redirigir a la selección
+            header("Location: ../views/search/select.php");
             exit;
         } else {
             // si la contraseña no es correcta
             echo "Contraseña incorrecta. Redirigiendo...";
-            
-            // Redirigir a la página anterior (si existe)
-            $previous_page = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'login.html';
-            
-            // Redirigir a la página anterior después de 5 segundos
+            $previous_page = $_SERVER['HTTP_REFERER'] ?? 'login.html';
             header("Refresh: 5; url=$previous_page");
             exit;
         }
     } else {
-        // Si el usuario no existe
+        // si el usuario no existe
         echo "Usuario no encontrado. Redirigiendo...";
-
-        // Redirigir a la página anterior después de 5 segundos
-        $previous_page = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'login.html';
-        
-        // Redirigir a la página anterior después de 5 segundos
+        $previous_page = $_SERVER['HTTP_REFERER'] ?? 'login.html';
         header("Refresh: 5; url=$previous_page");
         exit;
     }
 }
-
 ?>

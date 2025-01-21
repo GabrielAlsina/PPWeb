@@ -57,43 +57,6 @@ main {
     justify-content: flex-start;
 }
 
-/* Navbar Styling */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    z-index: 10;
-}
-
-.navbar-brand {
-    font-family: "Segoe UI", sans-serif;
-    font-weight: bold;
-    font-size: 1.7rem;
-    color: white;
-}
-
-.navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-.navbar-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.navbar-links a:hover {
-    color: #ddd;
-}
-
 .contact-button {
     background-color: #fc3441;
     color: white;

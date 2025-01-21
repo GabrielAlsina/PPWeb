@@ -1,22 +1,30 @@
+/* Navbar */
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Espacio entre el logo y los enlaces */
     padding: 0.5rem 2rem;
     background-color: #333;
     color: #fff;
+    position: fixed; /* Fija el navbar en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar-brand {
     font-family: 'Segoe UI', sans-serif;
     font-weight: bold;
     font-size: 1.7rem;
+    margin-right: 2rem; /* Da espacio entre el logo y los enlaces */
 }
 
 .navbar-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
+    margin-left: auto; /* Asegura que los enlaces estén alineados a la derecha */
 }
 
 .navbar-links a {

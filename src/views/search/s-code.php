@@ -37,14 +37,13 @@ $cart = $_SESSION["cart"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar práctica</title>
     <link rel="stylesheet" href="../../../public/css/s-code.css">
+    <link rel="stylesheet" href="../../../public/css/navbar.css" />
 </head>
 <body>
 <header>
-    <div id="goHome">
-        <a href="./select.html" class="button-link">Ir al inicio</a>
-    </div>
+  <?php include '../partials/navbar.php'?>
 </header>
-
+<br><br>
 <form id="searchForm">
     <label for="codigo">Buscar por código o descripción:</label>
     <div class="search-container">

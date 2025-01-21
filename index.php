@@ -1,5 +1,5 @@
 <?php 
-header("Location: ./src/views/home.html");
+header("Location: ./src/views/home.php");
 exit();
 
 ?>
