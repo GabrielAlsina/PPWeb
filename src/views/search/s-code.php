@@ -45,7 +45,7 @@ $cart = $_SESSION["cart"];
 </header>
 <br><br>
 <form id="searchForm">
-    <label for="codigo">Buscar por código o descripción:</label>
+    <label for="codigo">Buscar código o descripción:</label>
     <div class="search-container">
         <input type="text" id="codigo" name="codigo" placeholder="Codigo desde 000001 al 440101 ó por nombre de práctica">
         <button type="button" id="searchBtn">Buscar</button>
@@ -61,7 +61,7 @@ $cart = $_SESSION["cart"];
             <thead>
                 <tr>
                     <th>Código</th>
-                    <th>Descripción</th>
+                    <th>Descripción practica</th>
                     <th>Seleccionar</th>
                 </tr>
             </thead>
@@ -72,12 +72,12 @@ $cart = $_SESSION["cart"];
 
 <!-- Tabla de seleccionados -->
 <br>
-<h2>Seleccionados</h2>
+<h2>Practicas realizadas</h2>
 <table border="1" id="selectedTable">
     <thead>
         <tr>
             <th>Código</th>
-            <th>Descripción</th>
+            <th>Descripción practica</th>
             <th>Eliminar</th>
         </tr>
     </thead>
@@ -86,7 +86,7 @@ $cart = $_SESSION["cart"];
             <tr>
                 <td><?= htmlspecialchars($item["CODIGO"]) ?></td>
                 <td><?= htmlspecialchars($item["DESCRIPCION"]) ?></td>
-                <td><button type="button" class="removeBtn" data-index="<?= $index ?>">Eliminar</button></td>
+                <td><button type="button" class="removeBtn" data-index="<?= $index ?>">X</button></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

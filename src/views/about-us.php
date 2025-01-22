@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="../../public/css/about-us.css">
     <link rel="stylesheet" href="../../public/css/button.css">
     <link rel="stylesheet" href="../../public/css/footer.css">
+    <link rel="stylesheet" href="../../public/css/navbar.css">
 </head>
 
 <body>
     <header>
-        <h1>Quaerite</h1>
+        <?php include "./partials/navbar.php"; ?>
     </header>
     <div id="about-us">
         <h2>¿Quiénes somos?</h2>
@@ -66,9 +67,9 @@
             colaborar!
         </p>
 
-        <a class="button-link" href="./contacts/contact.html">Contactanos!</a>
+        <a class="button-link" href="./contacts/contact.php">Contactanos!</a>
     </div>
-    <?php include "../views/partials/footer.php" ?>
+    <?php include "./partials/footer.php"; ?>
 </body>
 
 </html>

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 row.innerHTML = `
                     <td>${item.codigo}</td>
                     <td>${item.descripcion}</td>
-                    <td><button class="removeBtn" data-codigo="${item.codigo}">Eliminar</button></td>
+                    <td><button class="removeBtn" data-codigo="${item.codigo}">X</button></td>
                 `;
                 selectedTable.appendChild(row);
             });

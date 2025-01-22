@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quaerite - Contacto</title>
     <link rel="stylesheet" href="../../../public/css/contacto.css">
+    <link rel="stylesheet" href="../../../public/css/footer.css">    
+    <link rel="stylesheet" href="../../../public/css/navbar.css">
 </head>
 
 <body>
     <header>
-
+        <?php include "../partials/navbar.php"?>
     </header>
     <main>
         <h1>Formulario de Contacto</h1>
@@ -59,15 +61,7 @@
 
         </form>
     </main>
-    <footer class="footer">
-        <p>© 2024 Quaerite. Todos los derechos reservados.</p>
-        <p>Encuéntranos en nuestras redes sociales:</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/feed/">LinkedIn</a>
-            <a href="https://x.com/">X</a>
-            <a href="https://www.facebook.com/">Facebook</a>
-          </div>
-    </footer>
+    <?php include "../partials/footer.php"?>
 </body>
 
 </html>

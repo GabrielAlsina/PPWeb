@@ -160,6 +160,23 @@ body::before {
   background-color: #ff4b4b;
 }
 
+/* Estilo para el enlace de contacto */
+a.button-link {
+  color: #fff; /* Color blanco por defecto */
+  text-decoration: none; /* Quitar el subrayado */
+  position: relative; /* Necesario para el subrayado */
+  transition: color 0.3s, transform 0.3s; /* Transición suave para el color y el tamaño */
+}
+
+/* Efecto cuando el cursor pasa sobre el enlace */
+a.button-link:hover {
+  color: #fc3441; /* Cambiar el color a un tono destacado */
+  text-decoration: underline; /* Subrayar el enlace */
+  text-decoration-thickness: 2px; /* Grosor del subrayado */
+  text-underline-position: under; /* Colocar el subrayado debajo del texto */
+  transform: scale(1.1); /* Aumentar el tamaño ligeramente */
+}
+
 /* Footer */
 main {
   flex-grow: 1; /* Hace que el contenido principal ocupe el espacio disponible */

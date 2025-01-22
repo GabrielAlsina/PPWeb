@@ -4,7 +4,7 @@
         <li><a href="../home.php">Home</a></li>
         <li><a href="../about-us.php">Quienes Somos</a></li>
         <li><a href="#c">Como se hizo</a></li>
-        <li><a href="../contacts/contact.html">Contacto</a></li>
+        <li><a href="../contacts/contact.php">Contacto</a></li>
         <div class="welcome-user">
             <?php if (isset($_SESSION['username'])): ?>
                 <!-- Nombre de usuario con fondo degradado -->

@@ -79,7 +79,7 @@ body::before {
 /* Header Styling */
 h1 {
     font-size: 2.5rem;
-    color: #fc3441;
+    color: #ff4b4b;
     margin-bottom: 1.5rem;
 }
 
@@ -139,8 +139,8 @@ table th, table td {
 }
 
 table th {
-    background-color: #fc3441;
-    color: #000000;
+    background-color: #ff4b4b;
+    color: #ffffffee;
 }
 
 table tr:nth-child(even) {
@@ -149,29 +149,6 @@ table tr:nth-child(even) {
 
 table tr:hover {
     background-color: #ff00000c;
-}
-
-/* Button for Home Link */
-#goHome {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
-}
-
-#goHome .button-link {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-    background-color: #fc34411f;
-    color: #ffffff0e;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-#goHome .button-link:hover {
-    background-color: #fc3441;
-    color: #fff;
 }
 
 /* Modal Styling */

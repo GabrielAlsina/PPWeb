@@ -13,12 +13,9 @@
 <body>
   <!-- Eencabezado -->
   <header class="header">
-    <?php include '../views/partials/navbar.php';?>
+    <?php include '../views/partials/navbar.php'; ?>
     <div id>
       <p class="tagline">Innovación y Soluciones a Medida</p>
-    </div>
-    <div id="facturacion">
-      <a href="./access/login.html" class="button-link">iniciar sesion</a>
     </div>
   </header>
 
@@ -52,7 +49,7 @@
         <p>
           ¿Preparado para transformar tu empresa?
         </p>
-        <a href="./contacts/contact.html" class="button-link">Contáctanos</a>
+        <a href="./contacts/contact.php" class="button-link">⋙ Contáctanos ⋘</a>
       </div>
     </div>
   </section>

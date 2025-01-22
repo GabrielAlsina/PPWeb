@@ -32,13 +32,15 @@ body::before {
 }
 
 /* Main Title */
+/* Main Title */
 main h1 {
   font-size: 3rem;
   font-weight: bold;
   color: #fff;
-  margin-top: 2rem;
+  margin-top: 6rem; /* Aumenté el margen superior */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
+
 
 /* Form Styling with Transparency */
 form {
