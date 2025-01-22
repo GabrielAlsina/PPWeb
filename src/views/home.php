@@ -7,6 +7,7 @@
   <title>Quaerite - Home</title>
   <link rel="stylesheet" href="../../public/css/home.css" />
   <link rel="stylesheet" href="../../public/css/footer.css">
+  <link rel="stylesheet" href="../../public/css/navbar.css">
 </head>
 
 <body>

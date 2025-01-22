@@ -7,14 +7,12 @@
     <title>Acerca de Quaerite</title>
     <link rel="stylesheet" href="../../public/css/about-us.css">
     <link rel="stylesheet" href="../../public/css/button.css">
+    <link rel="stylesheet" href="../../public/css/footer.css">
 </head>
 
 <body>
     <header>
         <h1>Quaerite</h1>
-        <div id="goHome">
-            <a href="./home.html" class="button-link">Ir al inicio</a>
-        </div>
     </header>
     <div id="about-us">
         <h2>¿Quiénes somos?</h2>
@@ -70,15 +68,7 @@
 
         <a class="button-link" href="./contacts/contact.html">Contactanos!</a>
     </div>
-    <footer class="footer">
-        <p>© 2024 Quaerite. Todos los derechos reservados.</p>
-        <p>Encuéntranos en nuestras redes sociales:</p>
-        <div class="social-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">Twitter</a>
-            <a href="#">Facebook</a>
-        </div>
-    </footer>
+    <?php include "../views/partials/footer.php" ?>
 </body>
 
 </html>
