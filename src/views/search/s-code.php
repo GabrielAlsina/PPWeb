@@ -86,7 +86,7 @@ $cart = $_SESSION["cart"];
             <tr>
                 <td><?= htmlspecialchars($item["CODIGO"]) ?></td>
                 <td><?= htmlspecialchars($item["DESCRIPCION"]) ?></td>
-                <td><button type="button" class="removeBtn" data-index="<?= $index ?>">X</button></td>
+                <td><button type="button" class="removeBtn" data-index="<?= $index ?>">Eliminar</button></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
