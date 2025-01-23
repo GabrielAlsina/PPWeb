@@ -1,6 +1,9 @@
 <?php
 require_once "../../config/database.php";
 require_once "../../models/Nomenclador.php";
+require_once "../../models/Paciente.php"; // Importamos el modelo de Paciente
+require_once "../../models/ObraSocial.php"; // Importamos el modelo de ObraSocial
+require_once "../../controllers/ObraSocialController.php"; // Importamos el controlador de ObraSocial
 
 session_start();
 
@@ -8,8 +11,13 @@ session_start();
 $db = new DataBase();
 $pdo = $db->getConnection();
 
-// Modelo nomenclador
+// Modelos
 $nomencladorModel = new Nomenclador($pdo);
+$pacienteModel = new Paciente($pdo); // Instanciamos el modelo Paciente
+
+// Obtener las obras sociales
+$obraSocialController = new ObraSocialController();
+$obrasSociales = $obraSocialController->getAll();
 
 // Inicializar carrito si no existe
 if (!isset($_SESSION["cart"])) {
@@ -19,10 +27,19 @@ if (!isset($_SESSION["cart"])) {
 // Obtener resultados (AJAX)
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])) {
     $response = [];
+
+    // Búsqueda de prácticas
     if ($_POST["action"] === "search") {
         $keyword = htmlspecialchars($_POST["keyword"]);
         $response = $nomencladorModel->searchByKeyword($keyword);
     }
+
+    // Búsqueda de pacientes
+    if ($_POST["action"] === "searchPatient") {
+        $dni = htmlspecialchars($_POST["dni"]);
+        $response = $pacienteModel->searchByDNI($dni);
+    }
+
     echo json_encode($response);
     exit;
 }
@@ -45,14 +62,40 @@ $cart = $_SESSION["cart"];
 </header>
 <br><br>
 <form id="searchForm">
-    <label for="codigo">Buscar código o descripción:</label>
     <div class="search-container">
-        <input type="text" id="codigo" name="codigo" placeholder="Codigo desde 000001 al 440101 ó por nombre de práctica">
-        <button type="button" id="searchBtn">Buscar</button>
+        <div class="search-container-n">
+            <input type="text" id="codigo" name="codigo" placeholder="Codigo desde 000001 al 440101 ó por nombre de práctica">
+            <button type="button" id="searchBtn">Buscar</button>
+        </div>  <!-- <br>-->
+        <div class="search-container-n">
+            <input type="text" id="paciente" name="paciente" placeholder="Ingrese DNI del paciente">
+            <button type="button" id="searchBtnp">Buscar</button>
+        </div>
+    </div>
+
+    <!-- Contenedor para mostrar el nombre y apellido del paciente seleccionado -->
+    <div id="container-OS-P">
+        <div class="search-container-o">
+            <select id="osocial" name="osocial">
+                <option value="">Seleccione obra social</option>
+                <?php foreach ($obrasSociales as $obraSocial): ?>
+                    <option value="<?= htmlspecialchars($obraSocial['codigo']) ?>">
+                        <?= htmlspecialchars($obraSocial['titulo']) ?> - 
+                        Código: <?= htmlspecialchars($obraSocial['codigo']) ?> - 
+                        CUIT: <?= htmlspecialchars($obraSocial['cuit']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div> <!-- <br>-->
+        <div id="patientInfo" style="display: none;">
+            <p><strong>DNI:</strong> <span id="patientDNI"></span></p>
+            <p><strong>Nombre:</strong> <span id="patientName"></span></p>
+            <p><strong>Apellido:</strong> <span id="patientLastName"></span></p>
+        </div>
     </div>
 </form>
 
-<!-- Modal para mostrar resultados -->
+<!-- Modal para mostrar resultados de prácticas -->
 <div id="resultsModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -61,11 +104,30 @@ $cart = $_SESSION["cart"];
             <thead>
                 <tr>
                     <th>Código</th>
-                    <th>Descripción practica</th>
+                    <th>Descripción práctica</th>
                     <th>Seleccionar</th>
                 </tr>
             </thead>
             <tbody id="resultsTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal para mostrar resultados de pacientes -->
+<div id="patientResultsModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Resultados de búsqueda de paciente</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="patientResultsTable"></tbody>
         </table>
     </div>
 </div>
@@ -77,7 +139,7 @@ $cart = $_SESSION["cart"];
     <thead>
         <tr>
             <th>Código</th>
-            <th>Descripción practica</th>
+            <th>Descripción práctica</th>
             <th>Eliminar</th>
         </tr>
     </thead>
