@@ -8,9 +8,9 @@
 /* Body Styling */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9); /* Gradiente similar al de home.css */
-    background-size: 400% 400%; /* Asegura que el gradiente cubra todo el fondo */
-    animation: gradientShift 11s ease infinite; /* Animación del cambio rápido de gradiente */
+    background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9);
+    background-size: 400% 400%;
+    animation: gradientShift 11s ease infinite;
     color: #fff;
     text-align: center;
     position: relative;
@@ -18,10 +18,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding: 30px 20px 20px 20px; /* 30px en la parte superior, 20px en los demás lados */
+    padding: 50px 20px 20px 20px; /* 50px en la parte superior */
 }
 
-/* Animación del fondo degradado (más rápido) */
+/* Animación del fondo degradado */
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
@@ -42,92 +42,34 @@ body::before {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.7); /* Oscurece un poco el fondo */
+    background: rgba(0, 0, 0, 0.7);
     z-index: -1;
 }
 
-/* Main Container */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Header Styling */
-h1 {
-    font-size: 2.5rem;
-    color: #ff4b4b;
-    margin-bottom: 1.5rem;
-}
-
-/* Form Styling */
-form {
+/* Container 1 Styling */
+.container1 {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-/* Search Container */
-.search-container {
-    display: flex;
-    flex-direction: column;
     gap: 1rem;
-    width: 50%; /* Ajusta el ancho según sea necesario */
+    margin-bottom: 1rem;
 }
 
 .search-container-n {
     display: flex;
     gap: 1rem;
     align-items: center;
+    width: 60%;
 }
 
-/* Container for Patient Info and Obra Social */
-#container-OS-P {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 50%; /* Ajusta el ancho según sea necesario */
-}
-
-/* Patient Info Styling */
-#patientInfo {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    color: #fff;
-}
-
-#patientInfo p {
-    margin: 0;
-}
-
-#patientInfo strong {
-    color: #ff4b4b;
-}
-
-/* Obra Social Select Styling */
 .search-container-o {
     display: flex;
     gap: 1rem;
     align-items: center;
-}
-
-.search-container-o label {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #ffffff81;
+    width: 40%;
 }
 
 .search-container-o select {
-    width: 100%; /* Mismo ancho que el input en search-container-n */
+    width: 100%;
     padding: 0.8rem;
     border: 2px solid #cccccc;
     border-radius: 5px;
@@ -140,6 +82,54 @@ form {
 .search-container-o select:focus {
     border-color: #ff4b4b;
     outline: none;
+}
+
+/* Container 2 Styling */
+.container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+#patientSearchContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+#selectedPatientContainer {
+    display: none;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* Estilos para el contenido del paciente seleccionado */
+#selectedPatientContainer #patientInfo {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+#selectedPatientContainer #patientInfo p {
+    margin: 0;
+    flex: 1; /* Distribuye el espacio equitativamente */
+}
+
+#selectedPatientContainer #patientInfo strong {
+    color: #ff4b4b;
+}
+
+#selectedPatientContainer #patientInfo button {
+    margin-left: auto; /* Coloca el botón "Quitar" a la derecha */
+    white-space: nowrap; /* Evita que el texto del botón se divida en varias líneas */
 }
 
 /* Input Field Styling */
@@ -191,7 +181,7 @@ table {
 table th, table td {
     padding: 0.8rem;
     text-align: left;
-    color: #333; /* Texto oscuro para mejor legibilidad */
+    color: #333;
 }
 
 table th {
@@ -221,14 +211,14 @@ table tr:hover {
 }
 
 .modal-content {
-    background-color: rgba(255, 255, 255, 0.95); /* Fondo más claro para mejor legibilidad */
+    background-color: rgba(255, 255, 255, 0.95);
     margin: 10% auto;
     padding: 2rem;
     border-radius: 10px;
     width: 90%;
     max-width: 600px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    color: #333; /* Texto oscuro para mejor legibilidad */
+    color: #333;
 }
 
 .modal-content h2 {
@@ -246,72 +236,40 @@ table tr:hover {
 
 .close:hover,
 .close:focus {
-    color: #333; /* Texto oscuro para mejor legibilidad */
+    color: #333;
     text-decoration: none;
-}
-
-/* Modal Table Styling */
-.modal-content table {
-    width: 100%;
-    margin-top: 1rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content th {
-    background-color: #ff4b4b;
-    color: #fff;
-}
-
-.modal-content td {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #333; /* Texto oscuro para mejor legibilidad */
-}
-
-.modal-content tr:hover {
-    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    body {
-        padding: 20px 10px 10px 10px; /* 20px en la parte superior, 10px en los demás lados */
-    }
-
-    .container {
-        width: 95%;
-        padding: 1rem;
-    }
-
-    form {
+    .container1 {
         flex-direction: column;
         gap: 1rem;
     }
 
-    .search-container,
-    #container-OS-P {
+    .search-container-n,
+    .search-container-o {
         width: 100%;
     }
 
-    .search-container-n {
+    .container2 {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
-    .modal-content {
-        width: 95%;
-        padding: 1rem;
-    }
-
-    #patientInfo {
+    #patientSearchContainer,
+    #selectedPatientContainer {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .search-container-o {
+    #selectedPatientContainer #patientInfo {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    #selectedPatientContainer #patientInfo button {
+        margin-left: 0;
+        margin-top: 1rem;
     }
 }

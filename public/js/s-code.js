@@ -7,10 +7,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedTable = document.getElementById("selectedTable").querySelector("tbody");
 
     const searchBtnp = document.getElementById("searchBtnp");
+    const patientSearchContainer = document.getElementById("patientSearchContainer");
+    const selectedPatientContainer = document.getElementById("selectedPatientContainer");
     const patientInfo = document.getElementById("patientInfo");
+    const patientDNI = document.getElementById("patientDNI");
     const patientName = document.getElementById("patientName");
     const patientLastName = document.getElementById("patientLastName");
-    const patientDNI = document.getElementById("patientDNI");
+    const removePatientBtn = document.getElementById("removePatientBtn");
+
+    // Función para mostrar la información del paciente seleccionado
+    const showSelectedPatient = (dni, nombre, apellido) => {
+        patientDNI.textContent = dni;
+        patientName.textContent = nombre;
+        patientLastName.textContent = apellido;
+        patientSearchContainer.style.display = "none";
+        selectedPatientContainer.style.display = "block";
+    };
+
+    // Función para restaurar el campo de búsqueda
+    const restoreSearchField = () => {
+        patientSearchContainer.style.display = "flex"; // Asegura que el contenedor de búsqueda se muestre correctamente
+        selectedPatientContainer.style.display = "none";
+        document.getElementById("paciente").value = ""; // Limpiar el campo de búsqueda
+    };
 
     // Función para guardar el carrito en localStorage
     const saveCartToLocalStorage = () => {
@@ -24,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("cart", JSON.stringify(cart));
     };
 
-    // Cargar carrito desde localStorage al cargar la página
+    // Función para cargar el carrito desde localStorage
     const loadCartFromLocalStorage = () => {
         const savedCart = JSON.parse(localStorage.getItem("cart"));
         if (savedCart) {
@@ -40,10 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Abrir y cerrar el modal
-    closeModal.addEventListener("click", () => resultsModal.style.display = "none");
-
-    // Función para realizar la búsqueda de prácticas
+    // Búsqueda de prácticas
     const performSearch = () => {
         const codigo = document.getElementById("codigo").value.trim();
 
@@ -81,46 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error:", error));
     };
 
-    // Búsqueda AJAX al hacer clic en el botón
-    searchBtn.addEventListener("click", performSearch);
-
-    // Búsqueda AJAX al presionar Enter en el formulario
-    searchForm.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevenir envío estándar
-        performSearch();
-    });
-
-    // Seleccionar producto y agregarlo al carrito
-    resultsTable.addEventListener("click", (event) => {
-        if (event.target.classList.contains("selectBtn")) {
-            const codigo = event.target.getAttribute("data-codigo");
-            const descripcion = event.target.getAttribute("data-descripcion");
-
-            // Agregar a la tabla de seleccionados
-            const row = document.createElement("tr");
-            row.innerHTML = `<td>${codigo}</td><td>${descripcion}</td><td><button class="removeBtn" data-codigo="${codigo}">Eliminar</button></td>`;
-            selectedTable.appendChild(row);
-
-            saveCartToLocalStorage(); // Guardamos el carrito actualizado
-            resultsModal.style.display = "none"; // Cerrar modal
-        }
-    });
-
-    // Eliminar producto específico del carrito
-    selectedTable.addEventListener("click", (event) => {
-        if (event.target.classList.contains("removeBtn")) {
-            // Eliminar solo la fila que contiene el botón clickeado
-            const rowToRemove = event.target.closest("tr");
-            rowToRemove.remove();
-
-            saveCartToLocalStorage(); // Guardamos el carrito actualizado después de la eliminación
-        }
-    });
-
-    // Cargar el carrito desde localStorage al iniciar la página
-    loadCartFromLocalStorage();
-
-    // Función para realizar la búsqueda de paciente
+    // Búsqueda de paciente
     const performPatientSearch = () => {
         const dni = document.getElementById("paciente").value.trim();
 
@@ -163,8 +140,47 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error:", error));
     };
 
-    // Búsqueda de paciente al hacer clic en el botón
+    // Eventos
+    searchBtn.addEventListener("click", performSearch);
+    searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        performSearch();
+    });
     searchBtnp.addEventListener("click", performPatientSearch);
+
+    // Agregar práctica al carrito
+    resultsTable.addEventListener("click", (event) => {
+        if (event.target.classList.contains("selectBtn")) {
+            const codigo = event.target.getAttribute("data-codigo");
+            const descripcion = event.target.getAttribute("data-descripcion");
+
+            // Agregar a la tabla de seleccionados
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${codigo}</td>
+                <td>${descripcion}</td>
+                <td><button class="removeBtn" data-codigo="${codigo}">Eliminar</button></td>
+            `;
+            selectedTable.appendChild(row);
+
+            // Guardar en localStorage
+            saveCartToLocalStorage();
+
+            // Cerrar el modal
+            resultsModal.style.display = "none";
+        }
+    });
+
+    // Eliminar práctica del carrito
+    selectedTable.addEventListener("click", (event) => {
+        if (event.target.classList.contains("removeBtn")) {
+            const rowToRemove = event.target.closest("tr");
+            rowToRemove.remove();
+
+            // Guardar en localStorage
+            saveCartToLocalStorage();
+        }
+    });
 
     // Agregar paciente seleccionado
     document.addEventListener("click", (event) => {
@@ -173,11 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const nombre = event.target.getAttribute("data-nombre");
             const apellido = event.target.getAttribute("data-apellido");
 
-            // Mostrar nombre, apellido y DNI del paciente seleccionado
-            patientName.textContent = nombre;
-            patientLastName.textContent = apellido;
-            patientDNI.textContent = dni;
-            patientInfo.style.display = "flex"; // Mostrar el contenedor de información
+            showSelectedPatient(dni, nombre, apellido);
 
             // Cerrar el modal de resultados
             const patientResultsModal = document.getElementById("patientResultsModal");
@@ -185,10 +197,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Cerrar el modal de resultados de búsqueda de pacientes
-    const closePatientModal = document.querySelector("#patientResultsModal .close");
-    closePatientModal.addEventListener("click", () => {
-        const patientResultsModal = document.getElementById("patientResultsModal");
-        patientResultsModal.style.display = "none";
+    // Quitar paciente seleccionado
+    removePatientBtn.addEventListener("click", restoreSearchField);
+
+    // Cerrar modales
+    closeModal.addEventListener("click", () => resultsModal.style.display = "none");
+    document.querySelector("#patientResultsModal .close").addEventListener("click", () => {
+        document.getElementById("patientResultsModal").style.display = "none";
     });
+
+    // Cargar el carrito desde localStorage al iniciar la página
+    loadCartFromLocalStorage();
 });
