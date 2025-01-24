@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const patientLastName = document.getElementById("patientLastName");
     const removePatientBtn = document.getElementById("removePatientBtn");
 
+    const patientResultsTable = document.getElementById("patientResultsTable");
+
     // Función para mostrar la información del paciente seleccionado
     const showSelectedPatient = (dni, nombre, apellido) => {
         patientDNI.textContent = dni;
@@ -26,9 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para restaurar el campo de búsqueda
     const restoreSearchField = () => {
-        patientSearchContainer.style.display = "flex"; // Asegura que el contenedor de búsqueda se muestre correctamente
+        patientSearchContainer.style.display = "flex";
         selectedPatientContainer.style.display = "none";
-        document.getElementById("paciente").value = ""; // Limpiar el campo de búsqueda
+        document.getElementById("paciente").value = "";
     };
 
     // Función para guardar el carrito en localStorage
@@ -78,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(response => response.json())
         .then(data => {
-            resultsTable.innerHTML = ""; // Limpiar resultados
+            resultsTable.innerHTML = "";
             if (data.length > 0) {
                 data.forEach(item => {
                     const row = document.createElement("tr");
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
                     resultsTable.appendChild(row);
                 });
-                resultsModal.style.display = "block"; // Mostrar modal
+                resultsModal.style.display = "block";
             } else {
                 alert("No se encontraron resultados.");
             }
@@ -117,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             const patientResultsModal = document.getElementById("patientResultsModal");
-            const patientResultsTable = document.getElementById("patientResultsTable");
-
-            patientResultsTable.innerHTML = ""; // Limpiar resultados anteriores
+            patientResultsTable.innerHTML = "";
 
             if (data.length > 0) {
                 data.forEach(item => {
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
                     patientResultsTable.appendChild(row);
                 });
-                patientResultsModal.style.display = "block"; // Mostrar modal de resultados
+                patientResultsModal.style.display = "block";
             } else {
                 alert("No se encontraron pacientes.");
             }
@@ -140,15 +140,35 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error:", error));
     };
 
-    // Eventos
+    // Eventos para búsqueda de prácticas
     searchBtn.addEventListener("click", performSearch);
     searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         performSearch();
     });
+
+    // Evento para búsqueda de prácticas al presionar Enter
+    const codigoInput = document.getElementById("codigo");
+    codigoInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            performSearch();
+        }
+    });
+
+    // Eventos para búsqueda de pacientes
     searchBtnp.addEventListener("click", performPatientSearch);
 
-    // Agregar práctica al carrito
+    // Evento para búsqueda de pacientes al presionar Enter
+    const pacienteInput = document.getElementById("paciente");
+    pacienteInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            performPatientSearch();
+        }
+    });
+
+    // Evento para el botón "Agregar" en los resultados de búsqueda de prácticas
     resultsTable.addEventListener("click", (event) => {
         if (event.target.classList.contains("selectBtn")) {
             const codigo = event.target.getAttribute("data-codigo");
@@ -171,19 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Eliminar práctica del carrito
-    selectedTable.addEventListener("click", (event) => {
-        if (event.target.classList.contains("removeBtn")) {
-            const rowToRemove = event.target.closest("tr");
-            rowToRemove.remove();
-
-            // Guardar en localStorage
-            saveCartToLocalStorage();
-        }
-    });
-
-    // Agregar paciente seleccionado
-    document.addEventListener("click", (event) => {
+    // Evento para el botón "Agregar" en los resultados de búsqueda de pacientes
+    patientResultsTable.addEventListener("click", (event) => {
         if (event.target.classList.contains("addPatientBtn")) {
             const dni = event.target.getAttribute("data-dni");
             const nombre = event.target.getAttribute("data-nombre");
@@ -197,8 +206,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Quitar paciente seleccionado
-    removePatientBtn.addEventListener("click", restoreSearchField);
+    // Evento para el botón "Eliminar" en la tabla de seleccionados
+    selectedTable.addEventListener("click", (event) => {
+        if (event.target.classList.contains("removeBtn")) {
+            const rowToRemove = event.target.closest("tr");
+            rowToRemove.remove();
+
+            // Guardar en localStorage
+            saveCartToLocalStorage();
+        }
+    });
 
     // Cerrar modales
     closeModal.addEventListener("click", () => resultsModal.style.display = "none");
