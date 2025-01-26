@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quaerite - Contacto</title>
-    <link rel="stylesheet" href="../../../public/css/contacto.css">
-    <link rel="stylesheet" href="../../../public/css/footer.css">    
-    <link rel="stylesheet" href="../../../public/css/navbar.css">
+    <link rel="stylesheet" href="../../public/css/contacto.css">
+    <link rel="stylesheet" href="../../public/css/footer.css">    
+    <link rel="stylesheet" href="../../public/css/navbar.css">
 </head>
 
 <body>
     <header>
-        <?php include "../partials/navbar.php"?>
+        <?php include "./partials/navbar.php"?>
     </header>
     <main>
         <h1>Formulario de Contacto</h1>
-        <form action="../../controllers/RegistroContactos.php" method="POST" aria-label="Formulario de contacto">
+        <form action="../controllers/RegistroContactos.php" method="POST" aria-label="Formulario de contacto">
 
 
             <div class="form-group">
@@ -61,7 +61,7 @@
 
         </form>
     </main>
-    <?php include "../partials/footer.php"?>
+    <?php include "./partials/footer.php"?>
 </body>
 
 </html>

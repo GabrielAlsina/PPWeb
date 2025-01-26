@@ -49,7 +49,7 @@
         <p>
           ¿Preparado para transformar tu empresa?
         </p>
-        <a href="./contacts/contact.php" class="button-link">⋙ Contáctanos ⋘</a>
+        <a href="../views/contact.php" class="button-link">⋙ Contáctanos ⋘</a>
       </div>
     </div>
   </section>

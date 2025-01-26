@@ -3,8 +3,8 @@
     <ul class="navbar-links">
         <li><a href="/src/views/home.php">Home</a></li>
         <li><a href="/src/views/about-us.php">Quienes Somos</a></li>
-        <li><a href="#EN_CONSTRUCCION">Como se hizo</a></li>
-        <li><a href="/src/views/contacts/contact.php">Contacto</a></li>
+        <li><a href="/src/views/how.php">Como se hizo</a></li>
+        <li><a href="/src/views/contact.php">Contacto</a></li>
         <div class="welcome-user">
             <?php if (isset($_SESSION['username'])): ?>
                 <!-- Nombre de usuario con fondo degradado -->
