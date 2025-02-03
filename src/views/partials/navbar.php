@@ -13,7 +13,7 @@
                 <li><a href="/src/controllers/LogoutController.php">Cerrar sesión</a></li>
             <?php else: ?>
                 <!-- Muestra el enlace de login si el usuario no está logueado -->
-                <li><a href="/src/views/access/login.html">Iniciar sesión</a></li>
+                <li><a href="/src/views/access/login.php">Iniciar sesión</a></li>
             <?php endif; ?>
         </div>
     </ul>

@@ -2,7 +2,7 @@
     <p>© 2024 Quaerite. Todos los derechos reservados.</p>
     <p>Encuéntranos en nuestras redes sociales:</p><br>
     <div class="social-links">
-        <a href="https://www.linkedin.com/feed/"><img
+        <a href="https://www.linkedin.com/"><img
                 src="../../../public/images/icons/i.png"
                 alt="linkedin" /></a>
         <a href="https://x.com/"><img

@@ -1,45 +1,59 @@
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 1rem; /* Reducido para hacerlo más compacto */
+  background-color: rgba(248, 242, 242, 0.8); /* Fondo más oscuro y suave */
+  color: #141111;
+  font-size: 0.875rem; /* Font-size más pequeño y legible */
+  text-align: center;
+  border-top: 2px solid #fc3441; /* Añadido borde superior para más estilo */
+}
+
+.footer .social-links a {
+  color: #fc3441;
+  text-decoration: none;
+  margin: 0 0.75rem; /* Reducción del margen para más compacidad */
+  transition: color 0.3s, transform 0.3s ease; /* Suavizado de la transición */
+}
+
+.footer .social-links a:hover {
+  color: #ff4b4b;
+  transform: scale(1.1); /* Efecto de agrandar para mayor dinamismo */
+}
+
+.footer .social-links img {
+  width: 24px; /* Reducido tamaño de íconos para mayor compactibilidad */
+  height: 24px;
+}
+
+/* Añadido un estilo más limpio y legible para los enlaces del footer */
+.footer .social-links a {
+  font-weight: 500; /* Ajuste de peso de fuente para más elegancia */
+  text-decoration: none;
+  color: #fc3441;
+  transition: font-weight 0.2s ease, text-decoration 0.2s ease;
+}
+
+.footer .social-links a:hover {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Media queries para mejorar la visualización en dispositivos más pequeños */
+@media (max-width: 768px) {
   .footer {
-    margin-top: auto; 
-    padding: 1.5rem;
-    background-color: rgba(248, 242, 242, 0.6);
-    color: #141111;
-    font-size: 0.9rem;
-    text-align: center; 
+      padding: 0.75rem; /* Aumento del padding en pantallas pequeñas */
   }
-  
-  /* enlaces redes sociales*/
+
   .footer .social-links a {
-    color: #fc3441;
-    text-decoration: none;
-    margin: 0 1rem;
-    transition: color 0.3s;
+      margin: 0 0.5rem; /* Aumentando el margen de los iconos */
   }
-  
-  .footer .social-links a:hover {
-    color: #ff4b4b;
-  }
-  
-  .footer .social-links img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  /* enlace del footer */
-  .footer .social-links a {
-    font-weight: normal;
-    text-decoration: none;
-    color: white;
-    transition: font-weight 0.2s ease, text-decoration 0.2s ease;
-  }
-  
-  .footer .social-links a:hover {
-    font-weight: bold;
-    text-decoration: underline;
-  }
-  
+}

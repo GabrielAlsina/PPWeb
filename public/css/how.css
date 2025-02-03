@@ -1,0 +1,108 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    padding: 60px 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* Sección de contenido */
+.content {
+    padding: 50px 20px;
+}
+
+/* Tarjetas de tecnología */
+.tech-card {
+    background: #1c1c1c;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tech-card h2 {
+    font-size: 1.8rem;
+    color: #4dabf7;
+}
+
+.tech-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cfcfcf;
+}
+
+/* Efecto Hover en Tarjetas */
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 153, 255, 0.3);
+}
+
+/* Footer */
+footer {
+    background: #0d0d0d;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Enlaces en el Footer */
+footer a {
+    color: #fc3441;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #ff4b4b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .tech-card {
+        padding: 20px;
+    }
+}
