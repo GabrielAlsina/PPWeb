@@ -217,6 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Evento para el botón "Quitar"
+    removePatientBtn.addEventListener("click", restoreSearchField);
+
     // Cerrar modales
     closeModal.addEventListener("click", () => resultsModal.style.display = "none");
     document.querySelector("#patientResultsModal .close").addEventListener("click", () => {
