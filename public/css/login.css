@@ -46,7 +46,7 @@ body::before {
 /* Estilos específicos para el formulario de Login */
 #formLogin {
   max-width: 400px;
-  margin: 4rem auto;
+  margin: 10rem auto;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.3); /* Fondo translúcido */
   border-radius: 10px;

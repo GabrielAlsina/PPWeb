@@ -6,9 +6,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../../public/css/login.css" />
+    <link rel="stylesheet" href="../../../public/css/navbar.css" />
     <title>Quaerite - Login</title>
   </head>
   <body>
+    <?php 
+    include '../partials/navbar.php';
+    ?>
     <div id="formLogin">
       <h1>Iniciar Sesión</h1>
       <form action="../../controllers/LoginController.php" method="POST">

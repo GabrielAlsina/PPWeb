@@ -137,7 +137,11 @@ $cart = $_SESSION["cart"];
 
     <!-- Tabla de seleccionados -->
     <br>
-    <h2>Practicas realizadas</h2>
+    <div id="practicasBtns">
+        <h2>Practicas realizadas</h2>
+        <button type="button" id="removepracticasBtn">Cancelar</button>
+        <button type="button" id="sendBtn">Confirmar</button>
+    </div>
     <table border="1" id="selectedTable">
         <thead>
             <tr>
