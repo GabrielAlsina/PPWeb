@@ -8,20 +8,20 @@
 /* Body Styling */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9); /* Gradiente de colores oscuros con tonos azulados y morados */
-  background-size: 400% 400%; /* Asegura que el gradiente cubra todo el fondo */
-  animation: gradientShift 11s ease infinite; /* Animación del cambio rápido de gradiente */
+  background: linear-gradient(135deg, #2c3e50, #34495e, #8e44ad, #2980b9);
+  background-size: 400% 400%;
+  animation: gradientShift 11s ease infinite;
   color: #fff;
   text-align: center;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Hace que el cuerpo ocupe al menos toda la altura de la pantalla */
-  padding-top: 80px; /* Ajuste para evitar que el navbar tape el contenido */
+  min-height: 100vh;
+  padding-top: 80px;
 }
 
-/* Animación del fondo degradado (más rápido) */
+/* Animación del fondo degradado */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -42,7 +42,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7); /* Oscurece un poco el fondo */
+  background: rgba(0, 0, 0, 0.7);
   z-index: -1;
 }
 
@@ -68,7 +68,7 @@ body::before {
   max-width: 800px;
   margin: 3rem auto;
   padding: 2rem;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0)); /* Degradado desde el centro a los bordes */
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0));
   border-radius: 10px;
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -90,28 +90,27 @@ body::before {
   gap: 2rem;
 }
 
-/* Estilo para las tarjetas de servicio (vidrio translúcido) */
+/* Estilo para las tarjetas de servicio */
 .service-card {
   width: 300px;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
-  border-radius: 12px; /* Bordes más redondeados */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más marcada */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   color: #fff;
-  backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, filter 0.3s ease; /* Transiciones suaves */
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, filter 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeIn 0.6s ease forwards;
-  cursor: pointer; /* Indica que es interactivo */
+  cursor: pointer;
 }
 
-/* Hover Effect - Movimiento y resplandor */
 .service-card:hover {
-  transform: translateY(-10px); /* Mueve la tarjeta hacia arriba */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
-  background: rgba(255, 255, 255, 0.3); /* Se ilumina ligeramente */
-  filter: brightness(1.2); /* Aumenta el brillo para un efecto de iluminación */
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.3);
+  filter: brightness(1.2);
 }
 
 /* Animación Fade-in */
@@ -130,19 +129,19 @@ body::before {
 .cta {
   margin: 3rem auto;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo menos blanco */
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   color: #cecece;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex; /* Usamos flexbox para alinear el contenido */
-  justify-content: flex-end; /* Alinea el contenido hacia la derecha */
-  align-items: center; /* Centra el contenido verticalmente */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .cta p {
   font-size: 1.5rem;
-  margin-right: 2rem; /* Espacio entre el texto y el botón */
-  flex-grow: 1; /* Hace que el texto ocupe el espacio restante */
+  margin-right: 2rem;
+  flex-grow: 1;
 }
 
 .cta a {
@@ -162,23 +161,83 @@ body::before {
 
 /* Estilo para el enlace de contacto */
 a.button-link {
-  color: #fff; /* Color blanco por defecto */
-  text-decoration: none; /* Quitar el subrayado */
-  position: relative; /* Necesario para el subrayado */
-  transition: color 0.3s, transform 0.3s; /* Transición suave para el color y el tamaño */
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s, transform 0.3s;
 }
 
-/* Efecto cuando el cursor pasa sobre el enlace */
 a.button-link:hover {
-  color: #fc3441; /* Cambiar el color a un tono destacado */
-  text-decoration: underline; /* Subrayar el enlace */
-  text-decoration-thickness: 2px; /* Grosor del subrayado */
-  text-underline-position: under; /* Colocar el subrayado debajo del texto */
-  transform: scale(1.1); /* Aumentar el tamaño ligeramente */
+  color: #fc3441;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-position: under;
+  transform: scale(1.1);
 }
 
 /* Footer */
 main {
-  flex-grow: 1; /* Hace que el contenido principal ocupe el espacio disponible */
+  flex-grow: 1;
 }
- 
+
+/* Responsividad */
+
+/* En pantallas más pequeñas, ajustamos los tamaños y el layout */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2.5rem; /* Reducir tamaño del título */
+  }
+
+  .header .tagline {
+    font-size: 1.5rem; /* Reducir tamaño del subtítulo */
+  }
+
+  .introduction {
+    padding: 1.5rem; /* Reducir padding */
+    margin: 2rem 1rem; /* Espacio reducido en los márgenes */
+  }
+
+  .service-cards {
+    flex-direction: column;
+    align-items: center; /* Centrar las tarjetas */
+    gap: 1.5rem; /* Espacio reducido entre tarjetas */
+  }
+
+  .service-card {
+    width: 90%; /* Hacer las tarjetas de servicio más anchas */
+    max-width: 350px; /* Limitar el ancho */
+    padding: 1rem; /* Reducir padding */
+  }
+
+  .cta {
+    padding: 1.5rem;
+  }
+
+  .cta p {
+    font-size: 1.2rem;
+  }
+
+  .cta a {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* En pantallas muy pequeñas */
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px; /* Ajustar el padding en pantallas pequeñas */
+  }
+
+  .header h1 {
+    font-size: 2rem; /* Aumentar reducción en tamaño de fuente */
+  }
+
+  .service-card {
+    width: 90%; /* Hacer las tarjetas de servicio casi de ancho completo */
+  }
+
+  .cta p {
+    font-size: 1rem;
+  }
+}

@@ -78,3 +78,58 @@
 .navbar-links a:hover {
     color: #ddd;
 }
+
+/* Estilo del menú hamburguesa */
+.hamburger {
+    display: none; /* Ocultar por defecto en pantallas grandes */
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+/* Estilo cuando el menú hamburguesa está activo (cambia el ícono) */
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 7px;
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0; /* Elimina la segunda línea */
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 7px;
+}
+
+/* Menú desplegable en dispositivos pequeños */
+.navbar-links.active {
+    display: flex !important; /* Asegúrate de que se muestre en pantallas pequeñas */
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none; /* Oculta el menú por defecto en pantallas pequeñas */
+        position: absolute;
+        top: 80px; /* Ajusta la posición del menú debajo del navbar */
+        left: 0;
+        width: 100%;
+        background-color: rgba(51, 51, 51, 0.9); /* Fondo oscuro */
+        flex-direction: column; /* Alinea los elementos verticalmente */
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .hamburger {
+        display: flex; /* Muestra el ícono de hamburguesa solo en pantallas pequeñas */
+    }
+}

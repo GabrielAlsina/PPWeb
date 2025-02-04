@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const result = await response.json(); // Asegúrate de que el servidor devuelva un JSON
           if (result.success) {
             alert(result.message || "¡Registro exitoso!");
-            window.location.href = "./login.html"; // Redirigir al login
+            window.location.href = "./login.php"; // Redirigir al login
           } else {
             alert(result.message || "Hubo un problema con el registro.");
           }

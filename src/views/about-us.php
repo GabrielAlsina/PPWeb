@@ -69,7 +69,7 @@
             colaborar!
         </p>
 
-        <a class="button-link" href="./contacts/contact.php">Contactanos!</a>
+        <a class="button-link" href="./contact.php">Contactanos!</a>
     </div>
     <?php include "./partials/footer.php"; ?>
 </body>

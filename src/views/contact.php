@@ -17,7 +17,7 @@
         <?php include "./partials/navbar.php"?>
     </header>
     <main>
-        <h1>Formulario de Contacto</h1>
+       <h1>Formulario de Contacto</h1>
         <form action="../controllers/RegistroContactos.php" method="POST" aria-label="Formulario de contacto">
 
 

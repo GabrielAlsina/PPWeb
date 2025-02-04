@@ -1,3 +1,4 @@
+<?php session_start(); // Inicia la sesión ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayuda</title>
     <link rel="stylesheet" href="../../../public/css/s-help.css">
+    <link rel="stylesheet" href="../../../public/css/navbar.css">
 </head>
 
 <body>
+    <header>
+    <?php
+include '../partials/navbar.php';
+?>
+    </header>
     <main>
         <div>
             <h2>¿Como se usa?</h2>
@@ -23,7 +30,7 @@
                 deseada.<br><br>
                 <strong>¡Así de fácil es!</strong> Le deseamos un excelente día en su jornada laboral. Si necesita
                 asistencia adicional, no dude en comunicarse con el Departamento de IT, haciendo click en el boton de
-                contacto en la página de inicio o bien haciendo click <a href="../contacts/contact.html"><strong>AQUÍ</strong></a>.
+                contacto en la página de inicio o bien haciendo click <a href="../contact.php"><strong>AQUÍ</strong></a>.
             </p>    
         </div>
     </main>

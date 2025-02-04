@@ -9,34 +9,34 @@ body {
 
 .footer {
   margin-top: auto;
-  padding: 1rem; /* Reducido para hacerlo más compacto */
-  background-color: rgba(248, 242, 242, 0.8); /* Fondo más oscuro y suave */
+  padding: 1rem;
+  background-color: rgba(248, 242, 242, 0.8); /* Fondo más suave */
   color: #141111;
   font-size: 0.875rem; /* Font-size más pequeño y legible */
   text-align: center;
-  border-top: 2px solid #fc3441; /* Añadido borde superior para más estilo */
+  border-top: 2px solid #fc3441;
 }
 
 .footer .social-links a {
   color: #fc3441;
   text-decoration: none;
-  margin: 0 0.75rem; /* Reducción del margen para más compacidad */
-  transition: color 0.3s, transform 0.3s ease; /* Suavizado de la transición */
+  margin: 0 0.75rem; /* Espacio compacto entre los íconos */
+  transition: color 0.3s, transform 0.3s ease; /* Transición suave */
 }
 
 .footer .social-links a:hover {
   color: #ff4b4b;
-  transform: scale(1.1); /* Efecto de agrandar para mayor dinamismo */
+  transform: scale(1.1); /* Efecto de agrandar para dinamismo */
 }
 
 .footer .social-links img {
-  width: 24px; /* Reducido tamaño de íconos para mayor compactibilidad */
-  height: 24px;
+  width: 24px;
+  height: 24px; /* Íconos más pequeños para una mejor disposición */
 }
 
-/* Añadido un estilo más limpio y legible para los enlaces del footer */
+/* Enlaces más elegantes */
 .footer .social-links a {
-  font-weight: 500; /* Ajuste de peso de fuente para más elegancia */
+  font-weight: 500;
   text-decoration: none;
   color: #fc3441;
   transition: font-weight 0.2s ease, text-decoration 0.2s ease;
@@ -47,13 +47,47 @@ body {
   text-decoration: underline;
 }
 
-/* Media queries para mejorar la visualización en dispositivos más pequeños */
-@media (max-width: 768px) {
+/* Media queries para pantallas medianas (tabletas y dispositivos pequeños) */
+@media (max-width: 1024px) {
   .footer {
-      padding: 0.75rem; /* Aumento del padding en pantallas pequeñas */
+    padding: 1rem 2rem; /* Aumenta un poco el padding en pantallas medianas */
   }
 
   .footer .social-links a {
-      margin: 0 0.5rem; /* Aumentando el margen de los iconos */
+    margin: 0 0.5rem; /* Reducir el margen entre los íconos */
+  }
+}
+
+/* Media queries para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 0.75rem 1rem; /* Reducir padding en pantallas más pequeñas */
+    font-size: 0.75rem; /* Reducir tamaño de fuente para mejor ajuste */
+  }
+
+  .footer .social-links a {
+    margin: 0 0.5rem; /* Ajustar margen entre los íconos */
+  }
+
+  .footer .social-links img {
+    width: 20px; /* Reducir aún más el tamaño de los íconos */
+    height: 20px;
+  }
+}
+
+/* Media queries para pantallas muy pequeñas (móviles muy pequeños o dispositivos de pantalla más estrecha) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 0.5rem 1rem; /* Reducir padding para una mayor compacidad */
+    font-size: 0.7rem; /* Ajuste de fuente aún más pequeña */
+  }
+
+  .footer .social-links a {
+    margin: 0 0.3rem; /* Ajuste de márgenes para que los íconos estén más cerca */
+  }
+
+  .footer .social-links img {
+    width: 18px; /* Más reducción del tamaño de los íconos */
+    height: 18px;
   }
 }

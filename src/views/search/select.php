@@ -20,7 +20,7 @@
       <ul>
         <li><a href="./s-code.php">Busqueda</a></li>
         <li><a href="./s-anatomic.html">Aproximación Anatómica</a></li>
-        <li><a href="./s-help.html">Ayuda</a></li>
+        <li><a href="./s-help.php">Ayuda</a></li>
       </ul>
     </div>
     <?php include '../partials/footer.php'; ?>

@@ -217,6 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Evento para el botón "Quitar" paciente
+    removePatientBtn.addEventListener("click", () => {
+        restoreSearchField();
+    });
+
     // Cerrar modales
     closeModal.addEventListener("click", () => resultsModal.style.display = "none");
     document.querySelector("#patientResultsModal .close").addEventListener("click", () => {
@@ -284,4 +289,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-

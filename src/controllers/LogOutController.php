@@ -9,6 +9,6 @@ if (isset($_SESSION['user_id'])) {
 }
 
 // Redirigir al usuario a la página de login
-header("Location: ../views/access/login.php");
+header("Location: ../views/home.php");
 exit();
 ?>

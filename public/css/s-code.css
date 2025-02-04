@@ -5,6 +5,17 @@
     box-sizing: border-box;
 }
 
+/* Variables de color */
+:root {
+    --primary-color: #ff4b4b;
+    --secondary-color: #ff6b6b;
+    --input-border-color: #cccccc;
+    --input-focus-border-color: var(--primary-color);
+    --background-color: rgba(218, 218, 218, 0.959);
+    --text-color: #333;
+    --overlay-color: rgba(0, 0, 0, 0.7);
+}
+
 /* Body Styling */
 body {
     font-family: 'Segoe UI', sans-serif;
@@ -14,11 +25,10 @@ body {
     color: #fff;
     text-align: center;
     position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding: 50px 20px 20px 20px; /* 50px en la parte superior */
+    padding: 50px 20px 20px;
 }
 
 /* Animación del fondo degradado */
@@ -34,7 +44,7 @@ body {
     }
 }
 
-/* Overlay Effect with Gradient */
+/* Overlay Effect */
 body::before {
     content: "";
     position: fixed;
@@ -42,11 +52,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--overlay-color);
     z-index: -1;
 }
 
-/* Container 1 Styling */
+/* Contenedor 1 */
 .container1 {
     display: flex;
     justify-content: space-between;
@@ -54,37 +64,39 @@ body::before {
     margin-bottom: 1rem;
 }
 
-.search-container-n {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    width: 60%;
-}
-
+/* Contenedor de búsqueda */
+.search-container-n,
 .search-container-o {
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+.search-container-n {
+    width: 60%;
+}
+
+.search-container-o {
     width: 40%;
 }
 
 .search-container-o select {
     width: 100%;
     padding: 0.8rem;
-    border: 2px solid #cccccc;
+    border: 2px solid var(--input-border-color);
     border-radius: 5px;
     font-size: 1rem;
-    color: #333;
-    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    background-color: var(--background-color);
     transition: border-color 0.3s ease;
 }
 
 .search-container-o select:focus {
-    border-color: #ff4b4b;
+    border-color: var(--input-focus-border-color);
     outline: none;
 }
 
-/* Container 2 Styling */
+/* Contenedor 2 */
 .container2 {
     display: flex;
     flex-direction: column;
@@ -92,25 +104,49 @@ body::before {
     width: 100%;
 }
 
+/* Contenedor de búsqueda de pacientes */
 #patientSearchContainer {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
     width: 100%;
 }
 
+/* Input del paciente */
+#patientSearchContainer input[type="text"] {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* Botón de búsqueda */
+#searchBtnP {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#searchBtnP:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Contenedor seleccionado */
 #selectedPatientContainer {
     display: none;
-    gap: 1rem;
-    align-items: center;
-    width: 100%;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
-    color: #fff;
 }
 
-/* Estilos para el contenido del paciente seleccionado */
 #selectedPatientContainer #patientInfo {
     display: flex;
     gap: 1rem;
@@ -120,36 +156,35 @@ body::before {
 
 #selectedPatientContainer #patientInfo p {
     margin: 0;
-    flex: 1; /* Distribuye el espacio equitativamente */
+    flex: 1;
 }
 
 #selectedPatientContainer #patientInfo strong {
-    color: #ff4b4b;
+    color: var(--primary-color);
 }
 
 #selectedPatientContainer #patientInfo button {
-    margin-left: auto; /* Coloca el botón "Quitar" a la derecha */
-    white-space: nowrap; /* Evita que el texto del botón se divida en varias líneas */
+    margin-left: auto;
 }
 
-/* Input Field Styling */
+/* Input Field */
 input[type="text"] {
     width: 100%;
     padding: 0.8rem;
-    border: 2px solid #cccccc;
+    border: 2px solid var(--input-border-color);
     border-radius: 5px;
     font-size: 1rem;
-    color: #333;
-    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    background-color: var(--background-color);
     transition: border-color 0.3s ease;
 }
 
 input[type="text"]:focus {
-    border-color: #ff4b4b;
+    border-color: var(--input-focus-border-color);
     outline: none;
 }
 
-/* Button Styling */
+/* Botones */
 button {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
@@ -157,35 +192,34 @@ button {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background-color: #ff4b4b;
+    background-color: var(--primary-color);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #ff6b6b;
+    background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
 
-/* Table Styling */
+/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--background-color);
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 table th, table td {
     padding: 0.8rem;
     text-align: left;
-    color: #333;
+    color: var(--text-color);
 }
 
 table th {
-    background-color: #ff4b4b;
+    background-color: var(--primary-color);
     color: #fff;
 }
 
@@ -197,7 +231,7 @@ table tr:hover {
     background-color: rgba(255, 255, 255, 0.7);
 }
 
-/* Modal Styling */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -206,23 +240,22 @@ table tr:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--background-color);
     margin: 10% auto;
     padding: 2rem;
     border-radius: 10px;
     width: 90%;
     max-width: 600px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    color: #333;
+    color: var(--text-color);
 }
 
 .modal-content h2 {
-    color: #ff4b4b;
+    color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
@@ -236,15 +269,13 @@ table tr:hover {
 
 .close:hover,
 .close:focus {
-    color: #333;
-    text-decoration: none;
+    color: var(--text-color);
 }
 
-/* Responsive Design */
+/* Diseño Responsive */
 @media (max-width: 768px) {
     .container1 {
         flex-direction: column;
-        gap: 1rem;
     }
 
     .search-container-n,
@@ -252,15 +283,8 @@ table tr:hover {
         width: 100%;
     }
 
-    .container2 {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    #patientSearchContainer,
-    #selectedPatientContainer {
-        flex-direction: column;
-        align-items: flex-start;
+    #patientSearchContainer {
+        flex-wrap: nowrap;
     }
 
     #selectedPatientContainer #patientInfo {
@@ -272,4 +296,21 @@ table tr:hover {
         margin-left: 0;
         margin-top: 1rem;
     }
+}
+
+/* Prácticas */
+#practicasDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+#practicaBtns {
+    display: flex;
+    gap: 1rem;
+}
+
+#practicasDiv h2 {
+    margin: 0;
 }
