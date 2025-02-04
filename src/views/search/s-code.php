@@ -1,9 +1,10 @@
-<?php
+<?php 
 require_once "../../config/database.php";
 require_once "../../models/Nomenclador.php";
 require_once "../../models/Paciente.php"; // Importamos el modelo de Paciente
 require_once "../../models/ObraSocial.php"; // Importamos el modelo de ObraSocial
 require_once "../../controllers/ObraSocialController.php"; // Importamos el controlador de ObraSocial
+require_once "../../controllers/NoFacturadoController.php"; // Importamos el controlador de NoFacturado
 
 session_start();
 
@@ -14,6 +15,7 @@ $pdo = $db->getConnection();
 // Modelos
 $nomencladorModel = new Nomenclador($pdo);
 $pacienteModel = new Paciente($pdo); // Instanciamos el modelo Paciente
+$noFacturadoController = new NoFacturadoController(); // Instanciamos el controlador de NoFacturado
 
 // Obtener las obras sociales
 $obraSocialController = new ObraSocialController();
@@ -40,6 +42,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])) {
         $response = $pacienteModel->searchByDNI($dni);
     }
 
+    // Inserción de datos en la tabla no_facturados
+    if ($_POST["action"] === "insertNoFacturado") {
+        $nombre = htmlspecialchars($_POST["nombre"]);
+        $apellido = htmlspecialchars($_POST["apellido"]);
+        $dni = htmlspecialchars($_POST["dni"]);
+        $obraSocial = htmlspecialchars($_POST["obra_social"]);
+        $codigo = htmlspecialchars($_POST["codigo"]);
+
+        $insertSuccess = $noFacturadoController->insertarNoFacturado($nombre, $apellido, $dni, $obraSocial, $codigo);
+        $response = ["success" => $insertSuccess];
+    }
+
     echo json_encode($response);
     exit;
 }
@@ -49,7 +63,6 @@ $cart = $_SESSION["cart"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +70,6 @@ $cart = $_SESSION["cart"];
     <link rel="stylesheet" href="../../../public/css/s-code.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css" />
 </head>
-
 <body>
     <header>
         <?php include '../partials/navbar.php' ?>
@@ -74,8 +86,8 @@ $cart = $_SESSION["cart"];
                     <option value="">Seleccione obra social</option>
                     <?php foreach ($obrasSociales as $obraSocial): ?>
                         <option value="<?= htmlspecialchars($obraSocial['codigo']) ?>">
-                            <?= htmlspecialchars($obraSocial['titulo']) ?> -
-                            Código: <?= htmlspecialchars($obraSocial['codigo']) ?> -
+                            <?= htmlspecialchars($obraSocial['titulo']) ?> - 
+                            Código: <?= htmlspecialchars($obraSocial['codigo']) ?> - 
                             CUIT: <?= htmlspecialchars($obraSocial['cuit']) ?>
                         </option>
                     <?php endforeach; ?>
@@ -137,10 +149,12 @@ $cart = $_SESSION["cart"];
 
     <!-- Tabla de seleccionados -->
     <br>
-    <div id="practicasBtns">
+    <div id="practicasDiv">
         <h2>Practicas realizadas</h2>
-        <button type="button" id="removepracticasBtn">Cancelar</button>
-        <button type="button" id="sendBtn">Confirmar</button>
+        <div id="practicaBtns">
+            <button type="button" id="removepracticasBtn">Cancelar</button>
+            <button type="button" id="sendBtn">Confirmar</button>
+        </div>
     </div>
     <table border="1" id="selectedTable">
         <thead>
@@ -161,7 +175,7 @@ $cart = $_SESSION["cart"];
         </tbody>
     </table>
 
+    <script src="../../../public/js/jquery.min.js"></script>
     <script src="../../../public/js/s-code.js"></script>
 </body>
-
 </html>

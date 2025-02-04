@@ -225,4 +225,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Cargar el carrito desde localStorage al iniciar la página
     loadCartFromLocalStorage();
+
+    // Nueva funcionalidad para el botón "Cancelar" (removepracticasBtn)
+    const removePracticasBtn = document.getElementById("removepracticasBtn");
+    removePracticasBtn.addEventListener("click", () => {
+        // Limpiar la tabla de seleccionados
+        selectedTable.innerHTML = "";
+        // Eliminar el carrito del localStorage
+        localStorage.removeItem("cart");
+    });
+
+    // Nueva funcionalidad para el botón "Confirmar" (sendBtn)
+    const sendBtn = document.getElementById("sendBtn");
+    sendBtn.addEventListener("click", () => {
+        const patientDni = patientDNI.textContent.trim();
+        const patientNombre = patientName.textContent.trim();  // Obtener nombre del paciente
+        const patientApellido = patientLastName.textContent.trim();  // Obtener apellido del paciente
+        const obrasocial = document.getElementById("osocial").value.trim();
+
+        if (!patientDni || !patientNombre || !patientApellido || !obrasocial) {
+            alert("Por favor, selecciona un paciente y una obra social.");
+            return;
+        }
+
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        if (!cart || cart.length === 0) {
+            alert("Por favor, agrega al menos una práctica.");
+            return;
+        }
+
+        let requestsCompleted = 0;
+        const totalRequests = cart.length;
+
+        cart.forEach(item => {
+            fetch("s-code.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({
+                    action: "insertNoFacturado",
+                    dni: patientDni,
+                    nombre: patientNombre,  // Enviar nombre
+                    apellido: patientApellido,  // Enviar apellido
+                    obra_social: obrasocial,
+                    codigo: item.codigo
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                requestsCompleted++;
+                if (requestsCompleted === totalRequests) {
+                    alert("Datos guardados correctamente.");
+                    localStorage.removeItem("cart");
+                    selectedTable.innerHTML = "";
+                    restoreSearchField();
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    });
 });
+
