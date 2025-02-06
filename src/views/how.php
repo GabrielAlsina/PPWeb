@@ -22,7 +22,7 @@
     <header>
         <div class="container">
             <h1>Tecnologías Utilizadas</h1>
-            <p>Un enfoque moderno con las mejores herramientas para el desarrollo web.</p>
+            <p>Lasherramientas utilizadas para el desarrollo del sitio web para relizar busquedas en un nomenclador.</p>
         </div>
     </header>
 
@@ -33,12 +33,12 @@
                 <!-- Tarjetas de tecnologías que describen el uso en el sistema -->
                 <article class="tech-card">
                     <h2>Backend</h2>
-                    <p>El sistema está desarrollado en <strong>PHP</strong>, utilizando <strong>MySQL</strong> como base de datos y siguiendo el patrón de diseño <strong>MVC</strong> (Modelo-Vista-Controlador), lo que permite una estructura organizada, escalable y fácil de mantener.</p>
+                    <p>El sistema está desarrollado en <strong>PHP</strong>, utilizando <strong>MySQL</strong> como base de datos y siguiendo el patrón de diseño <strong>MVC</strong> (Modelo-Vista-Controlador) visto en la cursada del instituto, esto permite una estructura organizada, escalable y más fácil de mantener.</p>
                 </article>
 
                 <article class="tech-card">
                     <h2>Frontend</h2>
-                    <p>Se emplea <strong>JavaScript</strong> junto con <strong>jQuery</strong> para la manipulación dinámica del DOM y la validación de formularios en el lado del cliente, mejorando la experiencia de usuario y la interacción con el sistema.</p>
+                    <p>Se emplea <strong>HTML</strong> y <strong>JavaScript</strong> junto con <strong>jQuery</strong> para la manipulación dinámica del DOM y la validación de formularios en el lado del cliente, mejorando la experiencia de usuario y la interacción con el sistema.</p>
                 </article>
 
                 <article class="tech-card">
